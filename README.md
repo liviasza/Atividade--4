@@ -1,6 +1,31 @@
 Atividade Prática 4 – Modelagem e SQL
 
-🧱 3. create_tables.sql
+1. Fundamentos e Preparação do Ambiente
+
+Nesta etapa foi feita a preparação completa do ambiente para o desenvolvimento do banco de dados PetLar.
+Foram revisados conceitos essenciais:
+
+A linguagem SQL é usada exclusivamente para criar, consultar, modificar e excluir dados.
+
+Linguagens como Python, Java, C# e JavaScript implementam lógica, aplicativos e interfaces.
+
+O ambiente utilizado foi MySQL Workbench, onde foram realizados:
+
+Criação do banco petlar;
+
+Configuração das tabelas conforme o modelo lógico;
+
+Definição de tipos de dados adequados (VARCHAR, INT, DATE…);
+
+Aplicação de chaves primárias, estrangeiras e demais regras de integridade.
+
+Essa base garantiu um ambiente estruturado para iniciar a manipulação de dados.
+
+📗 2. Implementação e Manipulação de Dados
+
+A segunda etapa envolveu o uso direto da SQL, aplicando comandos DDL e DML para manipulação e consulta de dados no sistema PetLar.
+
+2.1 Criação das Tabelas – create_tables.sql
 CREATE DATABASE IF NOT EXISTS petlar;
 USE petlar;
 
@@ -43,7 +68,7 @@ CREATE TABLE Adocao (
     FOREIGN KEY (id_adotante) REFERENCES Adotante(id_adotante)
 );
 
-🐾 4. insert_data.sql
+2.2 Inserção de Dados – insert_data.sql
 -- Inserir ONGs
 INSERT INTO ONG (nome, cnpj, telefone, cidade) VALUES
 ('Amigos dos Animais', '12.345.678/0001-90', '11988887777', 'São Paulo'),
@@ -66,7 +91,7 @@ INSERT INTO Animal (nome, especie, idade, status_adocao, id_ong) VALUES
 INSERT INTO Adocao (data_adocao, id_animal, id_adotante) VALUES
 ('2024-10-10', 4, 2);
 
-🔍 5. select_queries.sql
+2.3 Consultas SQL – select_queries.sql
 -- 1. Selecionar todos os animais disponíveis
 SELECT nome, especie, idade
 FROM Animal
@@ -95,7 +120,7 @@ FROM Animal A
 JOIN ONG O ON O.id_ong = A.id_ong
 WHERE O.nome = 'Amigos dos Animais';
 
-✏️ 6. update_delete.sql
+2.4 Atualização e Remoção – update_delete.sql
 -- UPDATE 1: Alterar status de adoção
 UPDATE Animal
 SET status_adocao = 'Adotado'
@@ -122,3 +147,22 @@ WHERE id_animal = 3;
 -- DELETE 3: Remover adotante sem adoções
 DELETE FROM Adotante
 WHERE id_adotante = 3;
+
+🧾 3. Considerações Finais
+
+A atividade consolidou o uso da linguagem SQL em um projeto real, integrando modelagem lógica, criação de tabelas, manipulação de dados e consultas avançadas.
+O banco PetLar foi totalmente implementado, incluindo:
+
+Estrutura relacional completa;
+
+Chaves e integridade referencial aplicadas;
+
+Dados inseridos e manipulados corretamente;
+
+Consultas SQL com JOIN, filtros, ordenações e limites;
+
+Atualizações e exclusões controladas;
+
+Versionamento do projeto no GitHub.
+
+O projeto demonstra domínio das operações fundamentais de um banco de dados relacional e aplicação prática de SQL em um cenário realista.
